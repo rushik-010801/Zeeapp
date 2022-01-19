@@ -72,6 +72,7 @@ public class Main {
 		String[] cast = {"cast1", "cast2"};
 		for(int i = 0; i < 20; i++) {
 			Movies mov = new Movies();
+			mov.setId("mid" + i);
 			mov.setMovieName("Movie" + i);
 			mov.setCategory("cat" + i);
 			mov.setReleaseDate(i + " " + i + " " + i);
@@ -85,13 +86,14 @@ public class Main {
 		for(Movies movie : movservice.getMovies()) {
 			System.out.println(movie);
 		}
-		System.out.println(movservice.getMovieById("Movie2"));
-		System.out.println(movservice.deleteMovieById("Movie2"));
+		System.out.println(movservice.getMovieById("mid2"));
+		System.out.println(movservice.deleteMovieById("mid2"));
 		
 		//Series
 		SeriesService serservice = SeriesService.getInstance();
 		for(int i = 0; i < 20; i++) {
 			Series ser = new Series();
+			ser.setId("ser" + i);
 			ser.setSeriesName("seriesName" + i);
 			ser.setNoofepisodes(10 + i);
 			ser.setNoofSeasons(7 + i);
@@ -104,8 +106,8 @@ public class Main {
 		for(Series ser : serservice.getSeries()) {
 			System.out.println(ser);
 		}
-		System.out.println(serservice.getSeriesById("Movie2"));
-		System.out.println(serservice.deleteSeriesById("Movie2"));
+		System.out.println(serservice.getSeriesById("ser2"));
+		System.out.println(serservice.deleteSeriesById("ser2"));
 	}
 
 }
