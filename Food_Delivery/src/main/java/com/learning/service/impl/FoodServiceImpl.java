@@ -65,6 +65,7 @@ public class FoodServiceImpl implements FoodService {
 		// TODO Auto-generated method stub
 		List<Food> list = foodRepository.findAll();
 		Food[] food = new Food[list.size()];
+		list.toArray(food);
 		return food;
 	}
 
