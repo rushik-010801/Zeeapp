@@ -50,12 +50,28 @@ public class FoodServiceImpl implements FoodService {
 	@Override
 	public Food updateFoodById(int id, Food food) throws IdNotFoundException, RecordAlreadyExistsException {
 		// TODO Auto-generated method stub
-		if(foodRepository.findById(id) == null) {
+		if(getFoodById(id) == null) {
 			throw new IdNotFoundException(String.valueOf(id));
 		}
 		else {
-			food.setFoodId(id);
-			return addFood(food);
+			Food food2 = getFoodById(id);
+			if(food.getDescription() != null) {
+				food2.setDescription(food.getDescription());
+			}
+			if(food.getFoodCost() != 0) {
+				food2.setFoodCost(food.getFoodCost());
+			}
+			if(food.getFoodName() != null) {
+				food2.setFoodName(food.getFoodName());
+			}
+			if(food.getFoodPic() != null) {
+				food2.setFoodPic(food.getFoodPic());
+			}
+			if(food.getFoodType() != null) {
+				food2.setFoodType(food.getFoodType());
+			}
+			Food food3 = foodRepository.save(food2);
+			return food3;
 		}
 	}
 

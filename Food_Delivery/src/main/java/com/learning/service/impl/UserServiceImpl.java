@@ -64,12 +64,25 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Register updateUserById(int id, Register register) throws IdNotFoundException, RecordAlreadyExistsException {
 		// TODO Auto-generated method stub
-		if(userRepository.getById(id) == null) {
+		if(getUserById(id) == null) {
 			throw new IdNotFoundException(String.valueOf(id));
 		}
 		else {
-			register.setRegId(id);
-			return addUser(register);
+			Register register2 = userRepository.getById(id);
+			if(register.getAddress() != null) {
+				register2.setAddress(register.getAddress());
+			}
+			if(register.getEmail() != null) {
+				register2.setEmail(register.getEmail());
+			}
+			if(register.getName() != null) {
+				register2.setName(register.getName());
+			}
+			if(register.getPassword() != null) {
+				register2.setPassword(register.getPassword());
+			}
+			Register register3 = userRepository.save(register2);
+			return register3;
 		}
 	}
 

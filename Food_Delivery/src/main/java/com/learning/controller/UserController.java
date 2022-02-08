@@ -89,7 +89,7 @@ public class UserController {
 	
 	//this method is mapped to updateUserById in UserServiceImpl
 	@PutMapping("/users/{id}")
-	public ResponseEntity<?> update(@PathVariable("id") int id, @Valid @RequestBody Register register) throws IdNotFoundException, RecordAlreadyExistsException {
+	public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody Register register) throws IdNotFoundException, RecordAlreadyExistsException {
 		Register res = userService.updateUserById(id, register);
 		if(res != null)
 			return ResponseEntity.status(201).body(res);

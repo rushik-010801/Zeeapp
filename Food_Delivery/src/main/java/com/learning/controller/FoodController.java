@@ -73,7 +73,7 @@ public class FoodController {
 	
 	//this method is mapped to updateFoodById in FoodserviceImpl
 	@PutMapping("/food/{id}")
-	public ResponseEntity<?> update(@PathVariable("id") int id, @Valid @RequestBody Food food) throws IdNotFoundException, RecordAlreadyExistsException {
+	public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody Food food) throws IdNotFoundException, RecordAlreadyExistsException {
 		Food food2 = foodService.updateFoodById(id, food);
 		if(food2 != null)
 			return ResponseEntity.status(201).body(food2);
