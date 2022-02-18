@@ -19,5 +19,8 @@ spring:
       ddl-auto: update
 server:
   port: 9005
-  servlet:
-    context-path: /api
+
+fooddelivery:
+  app:
+    jwtSecret: secretkey
+    jwtExpirationMs: 86400000
